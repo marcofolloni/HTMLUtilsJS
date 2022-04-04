@@ -18,6 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.0.3]
+
+### Added
+- Functions: createH, createLabel
+
+### Fixed
+- Avaible passing single class as string
+
 ## [0.0.2]
 
 ### Fixed

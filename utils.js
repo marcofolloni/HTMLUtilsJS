@@ -10,7 +10,7 @@
 export function createDiv( id, text = '', classes = [], attributes = {} ) {
     let defaultDiv = document.createElement( 'div' );
     defaultDiv.innerHTML = text;
-    defaultDiv.classList.add( ...classes );
+    ( typeof classes === 'string' ) ? defaultDiv.classList.add( classes ) : defaultDiv.classList.add( ...classes );
     for( const[ key, value ] of Object.entries( attributes ) ) {
         defaultDiv.setAttribute( key, value )
     }
@@ -33,7 +33,7 @@ export function createInput( id, type, placeholder = '', classes = [], datalist 
     defaultInput.name = defaultInput.id = id;
     defaultInput.type = type;
     defaultInput.placeholder = placeholder;
-    defaultInput.classList.add( ...classes );
+    ( typeof classes === 'string' ) ? defaultInput.classList.add( classes ) : defaultInput.classList.add( ...classes );
     if( datalist ) defaultInput.setAttribute( 'list', `${id}-datalist` );
     return defaultInput;
 }
@@ -52,7 +52,7 @@ export function createSelect( id, placeholder, classes = [], options = [] ){
     let option;
     defaultSelect.name = defaultSelect.id = id;
     defaultSelect.placeholder = placeholder;
-    defaultSelect.classList.add( ...classes );
+    ( typeof classes === 'string' ) ? defaultSelect.classList.add( classes ) : defaultSelect.classList.add( ...classes );
     options.forEach( ( { key, value, disabled = false, selected = false } ) => {
         option = document.createElement( 'option' );
         option.value = key;
@@ -94,7 +94,7 @@ export function createBtn( label, classes = [] ){
     let defaultBtn = document.createElement( 'button' );
     defaultBtn.innerHTML = label;
     defaultBtn.classList.add( 'btn-cuneo' );
-    defaultBtn.classList.add( ...classes );
+    ( typeof classes === 'string' ) ? defaultBtn.classList.add( classes ) : defaultBtn.classList.add( ...classes );
     return defaultBtn;
 }
 
@@ -112,6 +112,39 @@ export function createA( label, href, target = '_blank', classes = [] ){
     a.innerText = label;
     a.href = href;
     a.target = target;
-    a.classList.add( ...classes );
+    ( typeof classes === 'string' ) ? a.classList.add( classes ) : a.classList.add( ...classes );
     return a;
+}
+
+/**
+ * Generate an H tag
+ * 
+ * @param {String} header ex: h1, h2, h3, h4, h5, h6
+ * @param {String} id identifier
+ * @param {String} text content text
+ * @param {String|Array} classes class list
+ * @returns 
+ */
+export function createH( header = 'h1', id, text, classes = [] ){
+    let h = document.createElement( header );
+    h.id = id;
+    h.innerHTML = text;
+    ( typeof classes === 'string' ) ? h.classList.add( classes ) : h.classList.add( ...classes );
+    return h;
+}
+
+/**
+ * 
+ * @param {String} id 
+ * @param {String} text 
+ * @param {String} attrFor 
+ * @param {String|Array} classes 
+ */
+export function createLabel( id, text, attrFor, classes = [] ){
+    let label = document.createElement( 'label' );
+    label.id = id;
+    label.innerHTML = text;
+    label.for = attrFor;
+    ( typeof classes === 'string' ) ? label.classList.add( classes ) : label.classList.add( ...classes );
+    return label;
 }
