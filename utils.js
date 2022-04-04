@@ -1,10 +1,10 @@
 /**
  * Funzione per la generazione di un tag DIV
  * 
- * @param {*} id identificatore
- * @param {*} text testo contenuto
- * @param {*} classes classi da aggiungere
- * @param {*} attributes oggetto attributo
+ * @param {String} id identificatore
+ * @param {String} text testo contenuto
+ * @param {Array} classes classi da aggiungere
+ * @param {Object} attributes oggetto attributo
  * @returns 
  */
 export function createDiv( id, text = '', classes = [], attributes = {} ) {
@@ -21,11 +21,11 @@ export function createDiv( id, text = '', classes = [], attributes = {} ) {
 /**
  * Funzione per la generazione di un tag INPUT
  * 
- * @param {*} id 
- * @param {*} type 
- * @param {*} placeholder 
- * @param {*} classes 
- * @param {*} datalist 
+ * @param {String} id identificatore
+ * @param {String} type tipo text, number, etc
+ * @param {String} placeholder segnaposto
+ * @param {Array} classes classi da aggiungere
+ * @param {Boolean} datalist è un input di un datalist?
  * @returns 
  */
 export function createInput( id, type, placeholder = '', classes = [], datalist = false ){
@@ -41,10 +41,10 @@ export function createInput( id, type, placeholder = '', classes = [], datalist 
 /**
  * Funzione per la generazione di una SELECT con relativi OPTIONS
  * 
- * @param {*} id 
- * @param {*} placeholder 
- * @param {*} classes 
- * @param {*} options 
+ * @param {String} id identificatore
+ * @param {String} placeholder segnaposto
+ * @param {Array} classes classi da aggiungere
+ * @param {Array} options opzioni da annidare
  * @returns 
  */
 export function createSelect( id, placeholder, classes = [], options = [] ){
@@ -73,11 +73,11 @@ export function createDataList( id, options = [] ){
     let defaultDataList = document.createElement( 'datalist' );
     let option;
     defaultDataList.id = id;
-    for( const[ key, value ] of Object.entries( options ) ) {
+    options.forEach( value => {
         option = document.createElement( 'option' );
-        option.value = key;
+        option.value = value;
         defaultDataList.appendChild( option );
-    }
+    });
     return defaultDataList;
 }
 

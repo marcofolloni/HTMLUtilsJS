@@ -25,7 +25,7 @@ body.append( createSelect(
 
 body.append( createDataList(
     'input-1-datalist',
-    { opzione1: 'opzione 1', opzione2: 'opzione 2', opzione3: 'opzione 3' }
+    [ 'opzione 1', 'opzione 2', 'opzione 3']
 ));
 
 body.append( createBtn(
