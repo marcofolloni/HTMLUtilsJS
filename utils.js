@@ -1,10 +1,10 @@
 /**
- * Funzione per la generazione di un tag DIV
+ * Generate a DIV tag
  * 
- * @param {String} id identificatore
- * @param {String} text testo contenuto
- * @param {Array} classes classi da aggiungere
- * @param {Object} attributes oggetto attributo
+ * @param {String} id 
+ * @param {String} text content text
+ * @param {Array} classes class list
+ * @param {Object} attributes attributes list
  * @returns 
  */
 export function createDiv( id, text = '', classes = [], attributes = {} ) {
@@ -19,13 +19,13 @@ export function createDiv( id, text = '', classes = [], attributes = {} ) {
 }
 
 /**
- * Funzione per la generazione di un tag INPUT
+ * Generate an INPUT tag
  * 
- * @param {String} id identificatore
- * @param {String} type tipo text, number, etc
- * @param {String} placeholder segnaposto
- * @param {Array} classes classi da aggiungere
- * @param {Boolean} datalist è un input di un datalist?
+ * @param {String} id 
+ * @param {String} type text, number, etc
+ * @param {String} placeholder to print in field
+ * @param {Array} classes class list
+ * @param {Boolean} datalist is an input datalist?
  * @returns 
  */
 export function createInput( id, type, placeholder = '', classes = [], datalist = false ){
@@ -39,12 +39,12 @@ export function createInput( id, type, placeholder = '', classes = [], datalist 
 }
 
 /**
- * Funzione per la generazione di una SELECT con relativi OPTIONS
+ * Generate a SELECT/OPTION tag
  * 
- * @param {String} id identificatore
- * @param {String} placeholder segnaposto
- * @param {Array} classes classi da aggiungere
- * @param {Array} options opzioni da annidare
+ * @param {String} id 
+ * @param {String} placeholder to print in field
+ * @param {Array} classes class list
+ * @param {Array} options options to nest
  * @returns 
  */
 export function createSelect( id, placeholder, classes = [], options = [] ){
@@ -53,20 +53,22 @@ export function createSelect( id, placeholder, classes = [], options = [] ){
     defaultSelect.name = defaultSelect.id = id;
     defaultSelect.placeholder = placeholder;
     defaultSelect.classList.add( ...classes );
-    for( const[ key, value ] of Object.entries( options ) ) {
+    options.forEach( ( { key, value, disabled = false, selected = false } ) => {
         option = document.createElement( 'option' );
         option.value = key;
         option.innerText = value;
+        option.disabled = disabled;
+        option.selected = selected;
         defaultSelect.appendChild( option );
-    }
+    });
     return defaultSelect;
 }
 
 /**
- * Funzione per la generazione di un DATALIST
+ * Generate a DATALIST tag
  * 
- * @param {*} id 
- * @param {*} options 
+ * @param {String} id 
+ * @param {Array} options options to nest
  * @returns 
  */
 export function createDataList( id, options = [] ){
@@ -82,10 +84,10 @@ export function createDataList( id, options = [] ){
 }
 
 /**
- * Funzione per la generazione di un BUTTON
+ * Generate a BUTTON tag
  * 
- * @param {*} label 
- * @param {*} classes 
+ * @param {String} label CTA
+ * @param {Array} classes class list
  * @returns 
  */
 export function createBtn( label, classes = [] ){
@@ -97,12 +99,12 @@ export function createBtn( label, classes = [] ){
 }
 
 /**
- * Funzione per la generazione di un tag A
+ * Generate an A tag
  * 
- * @param {*} label 
- * @param {*} href 
- * @param {*} target 
- * @param {*} classes 
+ * @param {String} label CTA
+ * @param {String} href specified the URL
+ * @param {String} target _blank(default), _self, _parent, _top
+ * @param {Array} classes class list
  * @returns 
  */
 export function createA( label, href, target = '_blank', classes = [] ){

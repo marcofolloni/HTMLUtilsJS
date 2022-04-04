@@ -20,7 +20,23 @@ body.append( createSelect(
     'select-1',
     'placeholder',
     [ 'col' ],
-    { opzione1: 'opzione 1', opzione2: 'opzione 2', opzione3: 'opzione 3' }
+    [
+        { 
+            key: 'opzione1',
+            value: 'opzione 1',
+            disabled: true,
+            selected: true,
+        },
+        {
+            key: 'opzione2',
+            value: 'opzione 2',
+            disabled: true,
+        },
+        {
+            key: 'opzione3',
+            value: 'opzione 3'
+        }
+    ]
 ));
 
 body.append( createDataList(
