@@ -1,0 +1,22 @@
+{
+  "name": "utilsjs",
+  "version": "1.0.0",
+  "description": "UtilsJs is a simple suite of functions to generate easy html tag",
+  "main": "test.js",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.17.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "babel-cli": "^6.26.0",
+    "babel-minify": "^0.5.1"
+  },
+  "scripts": {
+    "babel": "babel src/utils.js -d dist --source-maps --presets minify"
+  },
+  "author": "",
+  "license": "ISC"
+}

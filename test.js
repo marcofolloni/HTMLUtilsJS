@@ -1,6 +1,5 @@
-import { createDiv, createInput, createSelect, createDataList, createBtn, createA, createH, createLabel } from './utils.js';
+// import { HTMLUtilsJS } from './dist/utils.js';
 const body = document.querySelector( 'body' );
-
 body.append( 
     createDiv(
         'test-1',
